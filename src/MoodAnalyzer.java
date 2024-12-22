@@ -21,15 +21,21 @@ public class MoodAnalyzer {
     }
 
     // Analyse mood based on the message field
-    public String analyseMood() {
+    public String analyseMood() throws MoodAnalysisException {
         try {
-            if (message != null && message.toLowerCase().contains("sad")) {
+            if (message == null) {
+                throw new MoodAnalysisException(MoodAnalysisError.NULL, "Mood is NULL");
+            }
+            if (message.trim().isEmpty()) {
+                throw new MoodAnalysisException(MoodAnalysisError.EMPTY, "Mood is EMPTY");
+            }
+            if (message.toLowerCase().contains("sad")) {
                 return "SAD";
             } else {
                 return "HAPPY";
             }
-        } catch (Exception e) {
-            return "HAPPY"; // Default to HAPPY in case of exceptions
+        } catch (MoodAnalysisException e) {
+            throw e;
         }
     }
 }
