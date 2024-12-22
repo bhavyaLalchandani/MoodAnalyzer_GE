@@ -8,6 +8,7 @@ public class Main {
         // Using the default constructor and setting the message later
         MoodAnalyzer moodAnalyser2 = new MoodAnalyzer();
         moodAnalyser2.setMessage("I am in Any Mood");
+      
         String result2 = moodAnalyser2.analyseMood();
         System.out.println("Message: " + moodAnalyser2.getMessage() + " | Mood: " + result2);
     }
